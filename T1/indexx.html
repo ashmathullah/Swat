@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swathy❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: radial-gradient(
+        ellipse at center,
+        #fce4ec 0%,
+        #f48fb1 55%,
+        #f06292 100%
+      );
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .sad-gif {
+      display: block;
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin: 0 auto 20px;
+    }
+
+    p {
+      max-width: 22em;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #880e4f;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: min(100%, 26rem);
+    }
+
+    .buttons:has(.yes.bigger) {
+      gap: 2rem;
+    }
+
+    .buttons:has(.yes.bigger2) {
+      gap: 2.75rem;
+    }
+
+    .buttons:has(.yes.bigger3) {
+      gap: 3rem;
+    }
+
+    .buttons:has(.yes.bigger4) {
+      gap: 3.25rem;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.65rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #4caf50;
+      font-size: 1.05rem;
+      padding: 0.7rem 2rem;
+      pointer-events: none;
+      cursor: default;
+      transition: font-size 0.25s ease, padding 0.25s ease;
+      width: fit-content;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .yes.bigger {
+      font-size: 2.1rem;
+      padding: 1.35rem 4rem;
+    }
+
+    .yes.bigger2 {
+      font-size: clamp(2.25rem, 10vw, 4.2rem);
+      padding: 2.5rem clamp(1.5rem, 8vw, 7.5rem);
+    }
+
+    .yes.bigger3 {
+      font-size: clamp(2.6rem, 11vw, 4.85rem);
+      padding: 2.85rem clamp(1.65rem, 9vw, 8.25rem);
+    }
+
+    .yes.bigger4 {
+      font-size: clamp(3.15rem, 13vw, 5.75rem);
+      padding: 3.35rem clamp(1.85rem, 10vw, 9.25rem);
+    }
+
+    body.final-step .yes {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .no {
+      background: #b71c1c;
+      font-size: 0.95rem;
+      padding: 0.55rem 1.35rem;
+      cursor: pointer;
+      width: 100%;
+      max-width: min(100%, 18rem);
+      white-space: normal;
+      line-height: 1.25;
+      flex-shrink: 0;
+    }
+
+    .no.no--flee {
+      position: fixed;
+      z-index: 50;
+      width: auto;
+      max-width: min(92vw, 20rem);
+      margin: 0;
+      pointer-events: none;
+      transition:
+        top 0.18s ease,
+        left 0.18s ease,
+        right 0.18s ease,
+        bottom 0.18s ease;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    /* FINAL LETTER INTRO */
+
+    .final-screen {
+      width: 100%;
+      max-width: 30rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .final-gif {
+      display: block;
+      width: 190px;
+      height: 190px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .thank-you {
+      color: #880e4f;
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .letter-wrap {
+      width: min(92vw, 360px);
+      perspective: 1000px;
+    }
+
+    .letter {
+      background: #fffafc;
+      border: 2px solid #f3a6bd;
+      border-radius: 18px;
+      padding: 28px 22px 24px;
+      box-shadow:
+        0 12px 30px rgba(136, 14, 79, 0.18),
+        0 4px 10px rgba(136, 14, 79, 0.10);
+      position: relative;
+    }
+
+    .letter::before {
+      content: "💌";
+      display: block;
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+
+    .letter-title {
+      color: #880e4f;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .letter-subtitle {
+      color: #ad1457;
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .open-letter {
+      background: #d81b60;
+      padding: 0.8rem 1.7rem;
+      font-size: 1rem;
+      box-shadow: 0 5px 14px rgba(136, 14, 79, 0.2);
+    }
+
+    .open-letter:hover {
+      transform: scale(1.03);
+    }
+
+    /* FINAL MESSAGE */
+
+    .letter-message {
+      width: min(94vw, 600px);
+      max-height: 78vh;
+      overflow-y: auto;
+      background: #fffafc;
+      border: 2px solid #f3a6bd;
+      border-radius: 20px;
+      padding: 30px 25px;
+      box-shadow:
+        0 12px 35px rgba(136, 14, 79, 0.20),
+        0 5px 12px rgba(136, 14, 79, 0.10);
+      color: #880e4f;
+      text-align: left;
+      white-space: pre-line;
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-message::before {
+      content: "💌";
+      display: block;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LANDING PAGE GIF -->
+  <img
+    id="sadGif"
+    class="sad-gif"
+    src="Love Bear Sticker - Love Bear Panda - Discover & Share GIFs.gif"
+    alt="🥺"
+  />
+
+  <!-- INTRO MESSAGE -->
+  <p id="introMessage">
+    Swathy Im really sorry, Can we sit and talk to solve this and become to normal? 🥺💕
+  </p>
+
+  <div class="buttons">
+    <button type="button" class="yes" tabindex="-1" aria-disabled="true">
+      Yes
+    </button>
+
+    <button type="button" class="no">
+      No
+    </button>
+  </div>
+
+  <script>
+    const yesBtn = document.querySelector(".yes");
+    const noBtn = document.querySelector(".no");
+    const sadGif = document.querySelector("#sadGif");
+    const introMessage = document.querySelector("#introMessage");
+
+    let noStep = 0;
+    let fleeSpotIndex = 0;
+    let lastFleeAt = 0;
+    let noMoveCount = 0;
+
+    const FLEE_MS = 220;
+    const NEAR_PX = 100;
+
+    const FLEE_SPOTS = [
+      { top: "11%", left: "4%", right: "auto", bottom: "auto" },
+      { top: "11%", right: "4%", left: "auto", bottom: "auto" },
+      { bottom: "11%", left: "4%", top: "auto", right: "auto" },
+      { bottom: "11%", right: "4%", top: "auto", left: "auto" },
+      { top: "36%", left: "3%", right: "auto", bottom: "auto" }
+    ];
+
+    /*
+      GIF ORDER
+
+      Landing page:
+      1. Love Bear
+
+      First No click:
+      2. Peach Goma tissue
+
+      Second No click:
+      3. Bubu Dudu cap
+
+      Third No click:
+      4. Peach Goma crying
+
+      Fourth No / moving No:
+      5. Flynn Rider
+    */
+
+    const GIFS = [
+      "Love Bear Sticker - Love Bear Panda - Discover & Share GIFs.gif",
+
+      "sticker gif png _ Peach Goma Sticker - Peach goma - GIF ____ ______________ ________.gif",
+
+      "Bubu Dudu Sticker – Bubu Dudu – discover and share GIFs.gif",
+
+      "Peach And Goma Peach Goma GIF – Peach and goma Peach goma Cat cute – discover and share GIFs.gif",
+
+      "Flynn Rider.gif"
+    ];
+
+    function changeGif(index) {
+      if (GIFS[index]) {
+        sadGif.src = GIFS[index];
+      }
+    }
+
+    function applyFleeSpot(i) {
+      const s = FLEE_SPOTS[i];
+
+      noBtn.style.top = s.top;
+      noBtn.style.left = s.left;
+      noBtn.style.right = s.right;
+      noBtn.style.bottom = s.bottom;
+
+      fleeSpotIndex = i;
+    }
+
+    function pickOtherSpot() {
+      let j = fleeSpotIndex;
+
+      if (FLEE_SPOTS.length < 2) return;
+
+      while (j === fleeSpotIndex) {
+        j = (Math.random() * FLEE_SPOTS.length) | 0;
+      }
+
+      applyFleeSpot(j);
+
+      noMoveCount++;
+
+      if (noMoveCount >= 2) {
+        yesBtn.style.pointerEvents = "auto";
+        yesBtn.style.cursor = "pointer";
+
+        yesBtn.removeAttribute("tabindex");
+        yesBtn.removeAttribute("aria-disabled");
+      }
+    }
+
+    function isNearNo(clientX, clientY) {
+      const r = noBtn.getBoundingClientRect();
+
+      return (
+        clientX >= r.left - NEAR_PX &&
+        clientX <= r.right + NEAR_PX &&
+        clientY >= r.top - NEAR_PX &&
+        clientY <= r.bottom + NEAR_PX
+      );
+    }
+
+    function onPointerNearMaybeFlee(clientX, clientY) {
+      if (noStep !== 4) return;
+
+      const now = performance.now();
+
+      if (now - lastFleeAt < FLEE_MS) return;
+
+      if (!isNearNo(clientX, clientY)) return;
+
+      lastFleeAt = now;
+
+      pickOtherSpot();
+    }
+
+    function onDocumentMove(ev) {
+      if (noStep !== 4) return;
+
+      const x = ev.clientX ?? ev.touches?.[0]?.clientX;
+      const y = ev.clientY ?? ev.touches?.[0]?.clientY;
+
+      if (x == null || y == null) return;
+
+      onPointerNearMaybeFlee(x, y);
+    }
+
+    function removeFleeListeners() {
+      document.removeEventListener("mousemove", onDocumentMove);
+      document.removeEventListener("touchmove", onDocumentMove);
+      document.removeEventListener("touchstart", onDocumentMove);
+    }
+
+    function startPoppers() {
+      const canvas = document.createElement("canvas");
+
+      canvas.className = "confetti-canvas";
+
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+
+      const pieces = [];
+
+      const colors = [
+        "#ff1744",
+        "#ffeb3b",
+        "#00e676",
+        "#2979ff",
+        "#e040fb",
+        "#ff9100",
+        "#ffffff",
+        "#00bcd4",
+        "#ff4081"
+      ];
+
+      function createBurst(x, y, angleCenter) {
+        for (let i = 0; i < 140; i++) {
+          const angle =
+            angleCenter + (Math.random() - 0.5) * 1.5;
+
+          const speed =
+            7 + Math.random() * 12;
+
+          pieces.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            gravity: 0.20 + Math.random() * 0.20,
+            size: 5 + Math.random() * 9,
+            rotation: Math.random() * Math.PI * 2,
+            rotationSpeed:
+              (Math.random() - 0.5) * 0.35,
+            color:
+              colors[Math.floor(Math.random() * colors.length)],
+            life: 0,
+            maxLife:
+              130 + Math.random() * 100
+          });
+        }
+      }
+
+      createBurst(10, 10, Math.PI / 4);
+
+      createBurst(
+        canvas.width - 10,
+        10,
+        (3 * Math.PI) / 4
+      );
+
+      createBurst(
+        10,
+        canvas.height - 10,
+        -Math.PI / 4
+      );
+
+      createBurst(
+        canvas.width - 10,
+        canvas.height - 10,
+        (-3 * Math.PI) / 4
+      );
+
+      setTimeout(() => {
+        createBurst(
+          10,
+          canvas.height * 0.45,
+          0
+        );
+
+        createBurst(
+          canvas.width - 10,
+          canvas.height * 0.45,
+          Math.PI
+        );
+      }, 180);
+
+      setTimeout(() => {
+        createBurst(
+          canvas.width * 0.25,
+          10,
+          Math.PI / 2
+        );
+
+        createBurst(
+          canvas.width * 0.75,
+          10,
+          Math.PI / 2
+        );
+      }, 350);
+
+      let animationFrame;
+
+      function animate() {
+        ctx.clearRect(
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        for (
+          let i = pieces.length - 1;
+          i >= 0;
+          i--
+        ) {
+          const p = pieces[i];
+
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotationSpeed;
+          p.life++;
+
+          ctx.save();
+
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.fillStyle = p.color;
+
+          ctx.fillRect(
+            -p.size / 2,
+            -p.size / 2,
+            p.size,
+            p.size * 0.65
+          );
+
+          ctx.restore();
+
+          if (
+            p.life > p.maxLife ||
+            p.y > canvas.height + 80 ||
+            p.x < -80 ||
+            p.x > canvas.width + 80
+          ) {
+            pieces.splice(i, 1);
+          }
+        }
+
+        if (pieces.length > 0) {
+          animationFrame =
+            requestAnimationFrame(animate);
+        } else {
+          cancelAnimationFrame(animationFrame);
+          canvas.remove();
+        }
+      }
+
+      animate();
+    }
+
+    function openLetter() {
+      document.body.innerHTML = `
+        <div class="letter-message">
+Thank you for saying yes!
+
+I’m really sorry, chechuuu. 🥺 I know I was mad, upset, and maybe rude or did things out of those emotions. But honestly, I never wanted to hurt you or let a silly fight come between us.
+
+We’ve been through so many fights, misunderstandings, and somehow our bond has always found its way back. That’s how special our friendship is to me. I really don’t want this one fight to become the reason we lose the beautiful bond we have.
+
+I have no ego or anything that is gonna stop me from making the first move.
+
+So, COME, LET’S TALK 🐒
+
+Let’s put our egos aside, talk everything out, understand each other, and sort this properly. I’m genuinely willing to listen, understand where It went wrong, and make things right. I just want us to be okay again… back to our normal stupid conversations, laughs, fights, and everything that makes us… us. 🥹
+
+With lots of love, care, and one very sorry
+
+Ashmath Chettannnnn ❤️
+        </div>
+      `;
+    }
+
+    function showThankYouMessage() {
+      removeFleeListeners();
+
+      document.body.classList.remove("final-step");
+
+      document.body.innerHTML = `
+        <div class="final-screen">
+
+          <!-- FINAL GIF -->
+          <img
+            class="final-gif"
+            src="Mimibubu Sticker - Mimibubu - Discover & Share GIFs.gif"
+            alt="❤️"
+          />
+
+          <div class="thank-you">
+            Thank you for saying yes! ❤️
+          </div>
+
+          <div class="letter-wrap">
+            <div class="letter">
+
+              <div class="letter-title">
+                A little letter for you 💌
+              </div>
+
+              <div class="letter-subtitle">
+                There is something I really want to tell you...
+              </div>
+
+              <button
+                type="button"
+                class="open-letter"
+                id="openLetterBtn"
+              >
+                TAP TO OPEN 💌
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      document
+        .getElementById("openLetterBtn")
+        .addEventListener("click", openLetter);
+
+      startPoppers();
+    }
+
+    function startFleeMode() {
+
+      // CHANGE TO FLYNN RIDER GIF
+      changeGif(4);
+
+      document.body.classList.add("final-step");
+
+      yesBtn.classList.remove("bigger3");
+      yesBtn.classList.add("bigger4");
+
+      noBtn.textContent =
+        "Last Chance Pls say YES💕🙌";
+
+      noBtn.classList.add("no--flee");
+
+      yesBtn.style.pointerEvents = "none";
+      yesBtn.style.cursor = "default";
+
+      yesBtn.setAttribute("tabindex", "-1");
+      yesBtn.setAttribute(
+        "aria-disabled",
+        "true"
+      );
+
+      noMoveCount = 0;
+
+      applyFleeSpot(0);
+
+      document.addEventListener(
+        "mousemove",
+        onDocumentMove
+      );
+
+      document.addEventListener(
+        "touchmove",
+        onDocumentMove,
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "touchstart",
+        onDocumentMove,
+        { passive: true }
+      );
+
+      yesBtn.addEventListener(
+        "click",
+        showThankYouMessage,
+        { once: true }
+      );
+    }
+
+    noBtn.addEventListener("click", () => {
+
+      if (noStep === 4) return;
+
+      if (noStep === 0) {
+
+        // FIRST NO
+        introMessage.style.display = "none";
+
+        changeGif(1);
+
+        yesBtn.classList.add("bigger");
+
+        noBtn.textContent =
+          "Are you sure?🙁";
+
+        noStep = 1;
+
+      } else if (noStep === 1) {
+
+        // SECOND NO
+        changeGif(2);
+
+        yesBtn.classList.remove("bigger");
+
+        yesBtn.classList.add("bigger2");
+
+        noBtn.textContent =
+          "Pookieee Please🫠";
+
+        noStep = 2;
+
+      } else if (noStep === 2) {
+
+        // THIRD NO
+        changeGif(3);
+
+        yesBtn.classList.remove("bigger2");
+
+        yesBtn.classList.add("bigger3");
+
+        noBtn.textContent =
+          "If you say NO I'll be really sad😭😔";
+
+        noStep = 3;
+
+      } else if (noStep === 3) {
+
+        // FOURTH NO
+        // Flynn Rider GIF + moving No button
+
+        noStep = 4;
+
+        startFleeMode();
+      }
+    });
+  </script>
+
+</body>
+</html>
